@@ -8,14 +8,68 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <title>Olá, mundo!</title>
+    <title>Poker frontend</title>
+
+    <style type="text/css">
+      #table-img { width: 800px; }
+
+      .cards { 
+          width: 50px;
+          height: 80px;
+          position: relative;
+          margin-left: -45px;
+      }
+      .cards.comunity { top: -275px; }
+      .card1-flop  { top: -275px; left: 280px; margin-left: -28px !important;}
+      .card2-flop  { top: -275px; left: 330px;}
+      .card3-flop  { top: -275px; left: 380px;}
+      .card4-turn  { top: -275px; left: 430px;}
+      .card5-river { top: -275px; left: 480px;}
+
+      .cards.player { top:-177px; left: 353px; margin-left: 6px;}
+      
+
+      #position-comunity-cards {  }
+    </style>
   </head>
   <body>
     <h1>Poker</h1>
 
+    <div id="table">
+      <img id="table-img" src="/static/tables/nice-green-table.png">
+
+      <div id="position-comunity-cards">
+        <img src="/static/cards/10C.png" class="cards comunity card1-flop">
+        <img src="/static/cards/10D.png" class="cards comunity card2-flop">
+        <img src="/static/cards/gray_back.png" class="cards comunity card3-flop">
+        <img src="/static/cards/gray_back.png" class="cards comunity card4-turn">
+        <img src="/static/cards/gray_back.png" class="cards comunity card5-river">
+      </div>
+
+
+      <img src="/static/cards/AC.png" class="cards player player-card1">
+      <img src="/static/cards/AD.png" class="cards player player-card2">
+    </div>
+
+    <script type="text/javascript">
+        
+        window.onload = function(){
+
+
+          $.get('http://localhost:8080/api/poker/deck/dealer', {}, function(resp){
+
+
+
+          }).fail(function(xrh, error, text){
+              console.log('server error');
+          })
+        }
+    </script>
+
     <!-- JavaScript (Opcional) -->
     <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   </body>
